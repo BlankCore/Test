@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Blank | Space</title>
+  <subtitle>xixi</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://BlankCore.github.io/"/>
+  <updated>2016-05-06T07:00:32.824Z</updated>
+  <id>http://BlankCore.github.io/</id>
+  
+  <author>
+    <name>Blank</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git简介</title>
+    <link href="http://BlankCore.github.io/2016/05/03/git_svn/"/>
+    <id>http://BlankCore.github.io/2016/05/03/git_svn/</id>
+    <published>2016-05-02T16:00:00.000Z</published>
+    <updated>2016-05-06T07:00:32.824Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;什么是GIT&quot;&gt;&lt;a href=&quot;#什么是GIT&quot; class=&quot;headerlink&quot; title=&quot;什么是GIT?&quot;&gt;&lt;/a&gt;什么是GIT?&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;Git是一个分布式的版本控制系统，最初由LinusTorvalds编写，用作Linux内核代码的管理。
+简单来说GIT就是管理代码的仓库，而仓库交给GitHub托管。其中开源项目可以免费托管，但私有库则并不如此。
+&lt;/code&gt;&lt;/pre&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;为什么要用GIT？&quot;&gt;&lt;a href=&quot;#为什么要用GIT？&quot; class=&quot;headerlink&quot; title=&quot;为什么要用GIT？&quot;&gt;&lt;/a&gt;为什么要用GIT？&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;先从SVN，GIT两种版本管理控制工具的开始说起
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;svn-集中式版本管理控制工具-的模式是：&quot;&gt;&lt;a href=&quot;#svn-集中式版本管理控制工具-的模式是：&quot; class=&quot;headerlink&quot; title=&quot;svn(集中式版本管理控制工具) 的模式是：&quot;&gt;&lt;/a&gt;svn(集中式版本管理控制工具) 的模式是：&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;1 写代码。
+2 从服务器拉回服务器的当前版本库，并解决服务器版本库与本地代码的冲突。
+3 将本地代码提交到服务器。
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;git-分布式版本管理控制工具-的模式是：&quot;&gt;&lt;a href=&quot;#git-分布式版本管理控制工具-的模式是：&quot; class=&quot;headerlink&quot; title=&quot;git(分布式版本管理控制工具)的模式是：&quot;&gt;&lt;/a&gt;git(分布式版本管理控制工具)的模式是：&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;1 写代码。
+2 提交到本地版本库。
+3 从服务器拉回服务器的当前版本库，并解决服务器版本库与本地代码的冲突。
+4 将远程库与本地代码合并结果提交到本地版本库。
+5 将本地版本库推到服务器。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;分布式版本管理仅仅是增加了本地库这个概念，其余的概念与集中管理并无区别。集中式版本控制工具，总有一个中心服务器，提供一个项目仓库，大家的代码的提交都是统一提交到这个中心服务器上的。而分布式版本控制工具，每一份clone都是一个代码仓库，控制自己的版本，通过管理工具方便的进行代码仓库合并。&lt;/p&gt;
+&lt;h2 id=&quot;SVNGIT的区别：&quot;&gt;&lt;a href=&quot;#SVNGIT的区别：&quot; class=&quot;headerlink&quot; title=&quot;SVNGIT的区别：&quot;&gt;&lt;/a&gt;SVNGIT的区别：&lt;/h2&gt;&lt;h3 id=&quot;1-GIT是分布式的，SVN不是：&quot;&gt;&lt;a href=&quot;#1-GIT是分布式的，SVN不是：&quot; class=&quot;headerlink&quot; title=&quot;1.GIT是分布式的，SVN不是：&quot;&gt;&lt;/a&gt;1.GIT是分布式的，SVN不是：&lt;/h3&gt;&lt;p&gt;简单说svn以svn服务器代码为中心，必须更新到最新版本才能commit，代码冲突交给程序员解决。(本地解决冲突再提交)，而git任何仓库都是平等的，pull会在本地提交(本地单独管理版本)，之后commit提交到服务器(提交时解决冲突的)。&lt;/p&gt;
+&lt;h3 id=&quot;2-GIT把内容按元数据方式存储，而SVN是按文件：&quot;&gt;&lt;a href=&quot;#2-GIT把内容按元数据方式存储，而SVN是按文件：&quot; class=&quot;headerlink&quot; title=&quot;2.GIT把内容按元数据方式存储，而SVN是按文件：&quot;&gt;&lt;/a&gt;2.GIT把内容按元数据方式存储，而SVN是按文件：&lt;/h3&gt;&lt;p&gt;所有的资源控制系统都是把文件的元信息隐藏在一个类似.svn,.cvs等的文件夹里。如果你把.git目录的体积大小跟.svn比较，你会发现它 们差距很大。因为,.git目录是处于你的机器上的一个克隆版的版本库，它拥有中心版本库上所有的东西，例如标签，分支，版本记录等。&lt;/p&gt;
+&lt;h3 id=&quot;3-GIT分支和SVN的分支不同：&quot;&gt;&lt;a href=&quot;#3-GIT分支和SVN的分支不同：&quot; class=&quot;headerlink&quot; title=&quot;3.GIT分支和SVN的分支不同：&quot;&gt;&lt;/a&gt;3.GIT分支和SVN的分支不同：&lt;/h3&gt;&lt;p&gt;分支在SVN中一点不特别，就是版本库中的另外的一个目录。如果你想知道是否合并了一个分支，你需要手工运行像这样的命令svn propget svn:mergeinfo ，来确认代码是否被合并。所以，经常会发生有些分支被遗漏的情况。然而，处理GIT的分支却是相当的简单和有趣。你可以从同一个工作目录下快速的在几个分支间切换。你很容易发现未被合并的分支，你能简单而快捷的合并这些文件。&lt;/p&gt;
+&lt;h3 id=&quot;4-GIT没有一个全局的版本号，而SVN有：&quot;&gt;&lt;a href=&quot;#4-GIT没有一个全局的版本号，而SVN有：&quot; class=&quot;headerlink&quot; title=&quot;4.GIT没有一个全局的版本号，而SVN有：&quot;&gt;&lt;/a&gt;4.GIT没有一个全局的版本号，而SVN有：&lt;/h3&gt;&lt;p&gt;目前为止这是跟SVN相比GIT缺少的最大的一个特征。SVN的版本号实际是任何一个相应时间的源代码快照。&lt;/p&gt;
+&lt;h3 id=&quot;5-GIT的内容完整性要优于SVN：&quot;&gt;&lt;a href=&quot;#5-GIT的内容完整性要优于SVN：&quot; class=&quot;headerlink&quot; title=&quot;5.GIT的内容完整性要优于SVN：&quot;&gt;&lt;/a&gt;5.GIT的内容完整性要优于SVN：&lt;/h3&gt;&lt;p&gt;GIT的内容存储使用的是SHA-1哈希算法。这能确保代码内容的完整性，确保在遇到磁盘故障和网络问题时降低对版本库的破坏。&lt;/p&gt;
+&lt;h1 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h1&gt;&lt;p&gt;简单说，多个人同时在开发，SVN需要你每完成一小步，就要去合并到服务器一次，而Git则可以多个人分别完成各自的工作以后，再把长长的分支做一次合并。&lt;/p&gt;
+&lt;h4 id=&quot;原因②-用GitHub-pages在GitHub上托管静态博客2333333&quot;&gt;&lt;a href=&quot;#原因②-用GitHub-pages在GitHub上托管静态博客2333333&quot; class=&quot;headerlink&quot; title=&quot;原因②~~用GitHub pages在GitHub上托管静态博客2333333&quot;&gt;&lt;/a&gt;原因②~~用GitHub pages在GitHub上托管静态博客2333333&lt;/h4&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;什么是GIT&quot;&gt;&lt;a href=&quot;#什么是GIT&quot; class=&quot;headerlink&quot; title=&quot;什么是GIT?&quot;&gt;&lt;/a&gt;什么是GIT?&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;Git是一个分布式的版本控制系统，最初由LinusTorvalds编写，用作Linux内核代码的管理。
+简单来说GIT就是管理代码的仓库，而仓库交给GitHub托管。其中开源项目可以免费托管，但私有库则并不如此。
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="建站历程" scheme="http://BlankCore.github.io/categories/%E5%BB%BA%E7%AB%99%E5%8E%86%E7%A8%8B/"/>
+    
+    
+      <category term="Git" scheme="http://BlankCore.github.io/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://BlankCore.github.io/2016/02/16/hello-world/"/>
+    <id>http://BlankCore.github.io/2016/02/16/hello-world/</id>
+    <published>2016-02-16T08:03:31.914Z</published>
+    <updated>2016-02-16T08:03:31.914Z</updated>
+    
+    <content type="html">&lt;p&gt;Welcome to &lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;http://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;http://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Generate-static-files&quot;&gt;&lt;a href=&quot;#Generate-static-files&quot; class=&quot;headerlink&quot; title=&quot;Generate static files&quot;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Deploy-to-remote-sites&quot;&gt;&lt;a href=&quot;#Deploy-to-remote-sites&quot; class=&quot;headerlink&quot; title=&quot;Deploy to remote sites&quot;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;http://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;http://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;http://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>My First Post</title>
+    <link href="http://BlankCore.github.io/2016/02/16/MyFirstPost/"/>
+    <id>http://BlankCore.github.io/2016/02/16/MyFirstPost/</id>
+    <published>2016-02-16T07:46:02.000Z</published>
+    <updated>2016-02-16T08:03:03.611Z</updated>
+    
+    <content type="html">&lt;p&gt;花费了几天的时间，把这个静态网站搭建（拼）好了，本来想自己写后台做个WEB应用的结果发现静态博客框架可以不用数据库，又发现这么好看的主题，连前台都不用写了，果断放弃已经写好的HTML模板，来用Hexo。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;花费了几天的时间，把这个静态网站搭建（拼）好了，本来想自己写后台做个WEB应用的结果发现静态博客框架可以不用数据库，又发现这么好看的主题，连前台都不用写了，果断放弃已经写好的HTML模板，来用Hexo。&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="建站历程" scheme="http://BlankCore.github.io/categories/%E5%BB%BA%E7%AB%99%E5%8E%86%E7%A8%8B/"/>
+    
+    
+      <category term="hexo" scheme="http://BlankCore.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+</feed>

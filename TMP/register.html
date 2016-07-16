@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+
+    <title>Signin</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+	 <link href="assets/signin.css" rel="stylesheet">
+    <link href="assets/styles.css" rel="stylesheet"> 
+	<link href="assets/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <form class="form-signin" method="post">
+        <h2 class="form-signin-heading">注册</h2>
+        <input type="text" id="username" class="form-control" placeholder="login id" name="username" required autofocus>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+		<input type="password" id="inputPassword" class="form-control" placeholder="Password Again" name="password2" required><br/><br/>
+		<label>上传图片：</label>
+		<input id="icon" name="icon" type="file" multiple=true class="file-loading icon">
+		<br/>
+		<button class="btn btn-lg btn-primary btn-block" id="register" type="button">确定注册</button>
+        <button class="btn btn-lg btn-primary btn-block" id="reset" type="reset">重置</button>
+      </form>
+      
+
+    </div> 
+  </body>
+</html>
+<script src="vendors/jquery.min.js"></script>
+<script src="js/fileinput.js" type="text/javascript"></script>
+<script src="js/fileinput_locale_zh.js" type="text/javascript"></script>
+
+
+        
+<script>
+	$(".icon").fileinput({
+		//uploadUrl: "http://localhost/index.php", // server upload action
+		uploadAsync: false,
+		overwriteInitial: true,
+		maxFileCount: 1
+	});
+	$("#login").click(function(){
+		$.post(
+			"",
+			{
+				username : $("#username").val(),
+				passwd : $("#password").val()
+			},
+			function(json){
+				if(json[0] == 1){
+					var id = json.value.id;
+					var token = json.value.token;
+					window.location.href = "index.html?id=" + id + "&token=" +  token;
+				}
+				alert("用户名或密码错误");
+				return false;
+			}
+		)
+	});
+</script>
+
